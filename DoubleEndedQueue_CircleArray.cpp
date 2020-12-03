@@ -60,11 +60,14 @@ int DQueue::size()const
 
 void DQueue::addFront(const Elem& e)
 {
-		if(size()==actual_len) throw " Function enqueue() : Queue Full ";
-	if(front==-1)
-	 front =0;
-	rear= (rear+1)%actual_len;
-		arr[rear] = e;
+	if(size()==actual_len) throw " Function enqueue() : Queue Full ";
+	if(rear==-1)
+	  rear= actual_len-1;
+	if(front==-1 || front==0)
+	 front = actual_len-1;
+	else
+	front= front-1;
+		arr[front] = e;
 	ctr++;
 }
 
